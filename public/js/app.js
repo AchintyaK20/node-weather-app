@@ -2,6 +2,7 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 
 const locationInfo = document.querySelector('#location')
+const localTime = document.querySelector('#localTime')
 const description = document.querySelector('#description')
 const currentTemp = document.querySelector('#currentTemp')
 const feelsLike = document.querySelector('#feelsLike')
@@ -16,6 +17,7 @@ weatherForm.addEventListener('submit', (e) => {
     const address = search.value
 
     locationInfo.textContent = 'Loading...'
+    localTime.textContent = ''
     description.textContent = ''
     currentTemp.textContent = ''
     feelsLike.textContent = ''
@@ -29,6 +31,7 @@ weatherForm.addEventListener('submit', (e) => {
                 locationInfo.textContent = data.error
             } else {
                 locationInfo.textContent = 'Location : ' + data.location
+                localTime.textContent = 'Local Time : ' + data.forecast.localTime
                 description.textContent = 'Description : ' + data.forecast.description
                 currentTemp.textContent = 'Temperature : ' + data.forecast.currentTemp + '°C'
                 feelsLike.textContent = 'Feels Like : ' + data.forecast.feelsLike + '°C'
