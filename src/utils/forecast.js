@@ -11,7 +11,7 @@ const forecast = (latitude, longitude, callback) => {
         if (error) {
             callback('Unable to connect to weather service!', undefined)
         } else if (body.error) {
-            callback('Unable to find location.', undefined)
+            callback(body.error.info, undefined)
         } else {
             const detail = {
                 localTime: body.location.localtime,
